@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>store</title>
+    <style>
+        input {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <form action="/ex/test1" method="post">
+        상품명<input type="text" name="productName" placeholder="상품명을 입력하세요">
+        상품가격<input type="text" name="productPrice" placeholder="상품가격을 입력하세요">
+        상품재고<input type="text" name="productStock" placeholder="상품재고를 입력하세요">
+        브랜드<input type="text" name="productBrand" placeholder="상품브랜드를 입력하세요">
+        <input type="submit" value="전송">
+    </form>
+
+
+</body>
+</html>
