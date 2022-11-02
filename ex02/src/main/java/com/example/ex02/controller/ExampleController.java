@@ -3,9 +3,9 @@ package com.example.ex02.controller;
 import com.example.ex02.domain.vo.MemberVO;
 import com.example.ex02.domain.vo.ProductVO;
 import com.example.ex02.domain.vo.TaskVO;
+import com.example.ex02.domain.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,7 +78,7 @@ public class ExampleController {
     }
 
     @PostMapping("/test2")
-    public String exam(TaskVO taskVO, Model model){
+    public String exam(TaskVO taskVO){
         return "test2/result";
     }
 
@@ -94,6 +94,18 @@ public class ExampleController {
         return "test3/login";
     }
 
+    @PostMapping("/test3")
+    public String login(UserVO userVO) {
+        return "login/" + (userVO.getId().equals("admin") ? "admin" : "user");
+//        if(id.equals("admin")){
+//            return "test3/admin";
+//        }else if(id.equals("user")){
+//            return "test3/user";
+//        }else{
+//            return null;
+//        }
+    }
+
 //    [실습4]
 //    이름을 입력하고 출근 또는 퇴근 버튼을 클릭한다.
 //    출근 시간은 09:00이며, 퇴근 시간은 17:00이다.
@@ -103,4 +115,21 @@ public class ExampleController {
 //    - leaveWork.html
 //    - late.html
 //    - work.html
+
+    @GetMapping("/test4")
+    public String goWork(){
+        return "test4/getToWork";
+    }
+
+    @PostMapping("/test4")
+    public String goWork(String id, String pw) {
+        if(id.equals("admin")){
+            return "test3/admin";
+        }else if(id.equals("user")){
+            return "test3/user";
+        }else{
+            return null;
+        }
+    }
+
 }
