@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Select;
 public interface TimeMapper {
     public String getTime();
 
-    @Select("SELECT SYSDATE FROM DUAL")
+    @Select("SELECT CURRENT_DATE FROM DUAL")
     public String getTimeQuick();
+
+
 }
