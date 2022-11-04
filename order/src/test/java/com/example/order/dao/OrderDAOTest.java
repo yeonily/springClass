@@ -66,6 +66,6 @@ public class OrderDAOTest {
 
     @Test
     public void findAllTest(){
-        orderDAO.findAll().stream().map(OrderVO::toString).forEach(log::info);
+        orderDAO.findAll().stream().map(OrderDTO::toString).forEach(log::info);
     }
 }

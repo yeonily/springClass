@@ -13,10 +13,10 @@ public interface OrderMapper {
 //    삭제
     public void delete(String orderId);
 //    조회
-    public List<OrderVO> select(Long itemNumber);
+    public List<OrderDTO> select(Long itemNumber);
     public List<OrderDTO> selectOrder(String orderId);
 //    전체 조회
-    public List<OrderVO> selectAll();
+    public List<OrderDTO> selectAll();
 //    주문 번호 조회
     public String selectOrderId();
 //    주문 번호 증가

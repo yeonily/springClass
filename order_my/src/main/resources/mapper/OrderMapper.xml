@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.order_my.mapper.OrderMapper">
+    <!--추가-->
+    <insert id="insert">
+        INSERT INTO TBL_ORDER (ORDER_ID, ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE)
+        VALUES(#{orderId}, #{itemNumber}, #{itemCount}, #{orderPrice})
+    </insert>
+    <!--삭제-->
+    <delete id="delete">
+        DELETE FROM TBL_ORDER
+        WHERE ORDER_ID=#{orderId}
+    </delete>
+    <!--상품 번호로 조회-->
+    <select id="selectByItemNumber" resultType="">
+        SELECT ORDER_ID, ORDER_DATE, ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE FROM TBL_ORDER
+        WHERE ITEM_NUMBER = #{itemNumber}
+    </select>
+    <!--주문 번호로 조회-->
+    <select id="selectByOrderId" resultType="">
+         SELECT ORDER_ID, ORDER_DATE, ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE FROM TBL_ORDER
+         WHERE ORDER_NUMBER = #{orderNumber}
+    </select>
+    <!--전체 조회-->
+    <select id="selectAll" resultType="orderVO">
+        SELECT ORDER_ID, ORDER_DATE, ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE FROM TBL_ORDER
+    </select>
+    <!--주문 번호를 조회-->
+    <select id="selectOrderId">
+    </select>
+    <!--주문 번호 증가-->
+    <update id="next">
+        UPDATE
+        SET
+        WHERE
+    </update>
+    <!--주문 번호 추가-->
+    <insert id="insertOrderSequence">
+        INSERT INTO TBL_ORDER_SEQ (ORDER_SEQ)
+        VALUES (CURRENT_DATE)
+    </insert>
+</mapper>

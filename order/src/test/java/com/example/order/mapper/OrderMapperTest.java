@@ -65,7 +65,7 @@ public class OrderMapperTest {
 
     @Test
     public void selectAllTest(){
-        orderMapper.selectAll().stream().map(OrderVO::toString).forEach(log::info);
+        orderMapper.selectAll().stream().map(OrderDTO::toString).forEach(log::info);
     }
 
 }

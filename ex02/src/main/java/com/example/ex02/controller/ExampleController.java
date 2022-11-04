@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -51,6 +52,20 @@ public class ExampleController {
         log.info("ex07.................");
         log.info("memberVO : " + memberVO);
         log.info("gender : " + gender);
+    }
+
+    @GetMapping("ex08")
+    public void ex08(@RequestParam("data") List<String> datas){
+        log.info(datas.toString());
+//        String[]
+        for(String data: datas){
+            log.info(data);
+        }
+    }
+
+    @GetMapping("ex09")
+    public void ex09(List<MemberVO> members){
+        log.info(members.toString());
     }
 
 //    [실습1]

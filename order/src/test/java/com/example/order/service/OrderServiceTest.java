@@ -1,8 +1,10 @@
 package com.example.order.service;
 
+import com.example.order.domain.dao.OrderDAO;
 import com.example.order.domain.vo.OrderDTO;
 import com.example.order.domain.vo.OrderVO;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,8 +42,19 @@ public class OrderServiceTest {
     }
 
 //    조회 테스트
-    
+    @Test
+    public void showTest(){
+        Long itemNumber = 1l;
+        orderSerive.show(itemNumber).forEach(order -> {
+            log.info(order.getOrderId() + ": " + order.getItemName() + ": " + order.getOrderDate() + ": " + order.getOrderPrice());
+        });
+    }
+
 //    전체 조회 테스트
+    @Test
+    public void showAllTest(){
+        orderSerive.showAll().stream().map(OrderDTO::toString).forEach(log::info);
+    }
 }
 
 

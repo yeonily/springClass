@@ -14,6 +14,7 @@ public class OrderDTO {
     private int itemCount;
     private int orderPrice;
     private int itemPrice;
+    private int itemStock;
 
     public void setOrderPrice(){
         this.orderPrice = this.itemCount * this.itemPrice;
@@ -32,4 +33,8 @@ public class OrderDTO {
     }
 
     public void setItemName(String itemName) {this.itemName = itemName;}
+
+    public void setItemStock(int itemStock) {
+        this.itemStock = itemStock;
+    }
 }
