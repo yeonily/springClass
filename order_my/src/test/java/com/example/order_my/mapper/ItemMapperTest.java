@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @Slf4j
 public class ItemMapperTest {
     @Autowired
-    private ItemMapper itemMapper;
+    private ItemMapper itemMapper; //생성자주입X 필드주입
 
     @Test
     public void insertTest(){

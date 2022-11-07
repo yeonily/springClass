@@ -12,29 +12,35 @@
         WHERE ORDER_ID=#{orderId}
     </delete>
     <!--상품 번호로 조회-->
-    <select id="selectByItemNumber" resultType="">
+    <select id="selectByItemNumber" resultType="orderVO">
         SELECT ORDER_ID, ORDER_DATE, ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE FROM TBL_ORDER
         WHERE ITEM_NUMBER = #{itemNumber}
     </select>
     <!--주문 번호로 조회-->
-    <select id="selectByOrderId" resultType="">
-         SELECT ORDER_ID, ORDER_DATE, ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE FROM TBL_ORDER
-         WHERE ORDER_NUMBER = #{orderNumber}
+    <select id="selectByOrderId" resultType="orderDTO">
+         SELECT ORDER_ID, ORDER_DATE, I.ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE, ITEM_NAME
+         FROM TBL_ITEM I JOIN TBL_ORDER O
+         ON ORDER_ID = #{orderId} AND I.ITEM_NUMBER = O.ITEM_NUMBER
     </select>
     <!--전체 조회-->
     <select id="selectAll" resultType="orderVO">
         SELECT ORDER_ID, ORDER_DATE, ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE FROM TBL_ORDER
     </select>
     <!--주문 번호를 조회-->
-    <select id="selectOrderId">
+    <select id="selectOrderId" resultType="string">
+        SELECT TO_CHAR(CURRENT_DATE, 'yyyymmdd') || ORDER_SEQ ORDER_NUMBER FROM
+        (
+            SELECT ORDER_SEQ, ORDER_DATE FROM TBL_ORDER_SEQ ORDER BY ROWNUM DESC
+        )
+        WHERE ROWNUM = 1
     </select>
     <!--주문 번호 증가-->
     <update id="next">
-        UPDATE
-        SET
-        WHERE
+        UPDATE TBL_ORDER_SEQ
+        SET ORDER_SEQ = ORDER_SEQ + 1
+        WHERE TO_CHAR(ORDER_DATE, 'yyyymmdd') = TO_CHAR(CURRENT_DATE, 'yyyymmdd')
     </update>
-    <!--주문 번호 추가-->
+    <!--주문 번호 추가(12시마다)-->
     <insert id="insertOrderSequence">
         INSERT INTO TBL_ORDER_SEQ (ORDER_SEQ)
         VALUES (CURRENT_DATE)

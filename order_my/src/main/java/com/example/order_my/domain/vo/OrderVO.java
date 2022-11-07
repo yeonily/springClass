@@ -11,4 +11,5 @@ public class OrderVO {
     private Long itemNumber;
     private int itemCount;
     private int orderPrice;
+
 }
