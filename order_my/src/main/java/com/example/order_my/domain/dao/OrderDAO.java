@@ -22,7 +22,7 @@ public class OrderDAO {
         orderMapper.delete(orderId);
     }
     //    상품 번호로 조회
-    public List<OrderVO> findByItemNumber(Long itemNumber){
+    public List<OrderDTO> findByItemNumber(Long itemNumber){
         return orderMapper.selectByItemNumber(itemNumber);
     }
     //    주문 번호로 조회
@@ -30,7 +30,7 @@ public class OrderDAO {
         return orderMapper.selectByOrderId(orderId);
     }
     //    전체 조회
-    public List<OrderVO> findAll(){
+    public List<OrderDTO> findAll(){
         return orderMapper.selectAll();
     }
     //    주문 번호를 조회

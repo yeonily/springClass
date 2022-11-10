@@ -66,6 +66,6 @@ public class OrderDAOTest {
     @Test
     public void findAllTest(){
         //log.info는 문자열밖에 출력이 안됨. 직접 toString 붙이고 나서 출력해준다.
-        orderDAO.findAll().stream().map(OrderVO::toString).forEach(log::info);
+        orderDAO.findAll().stream().map(OrderDTO::toString).forEach(log::info);
     }
 }

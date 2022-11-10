@@ -30,7 +30,7 @@ public class MyBatisConfig {
     }
 
     @Bean
-    public SqlSessionFactory sqlSessionFactory() throws IOException{
+    public SqlSessionFactory sqlSessionFactory() throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
         sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath*:/mapper/*.xml"));
@@ -45,3 +45,27 @@ public class MyBatisConfig {
         return null;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

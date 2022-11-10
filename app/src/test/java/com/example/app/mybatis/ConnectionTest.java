@@ -17,9 +17,28 @@ public class ConnectionTest {
     @Test
     public void datasourceTest(){
         try(Connection connection = dataSource.getConnection()){
-            log.info("datasource connection : " + connection);
+            log.info("datasource connection: " + connection);
         }catch (Exception e){
             log.info(e.getMessage());
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

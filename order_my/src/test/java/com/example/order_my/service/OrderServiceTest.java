@@ -1,5 +1,6 @@
 package com.example.order_my.service;
 
+import com.example.order_my.domain.vo.OrderDTO;
 import com.example.order_my.domain.vo.OrderVO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -42,9 +43,14 @@ public class OrderServiceTest {
 //    조회 테스트
    @Test
     public void showTest(){
-
+        orderService.show(5l).forEach(order -> {
+            log.info(order.getOrderId() + ": " + order.getItemName() + ": " + order.getOrderDate() + ": " + order.getOrderPrice());
+        });
     }
 
 //    전체 조회 테스트
-
+    @Test
+    public void showAllTest(){
+        orderService.showAll().stream().map(OrderDTO::toString).forEach(log::info);
+    }
 }

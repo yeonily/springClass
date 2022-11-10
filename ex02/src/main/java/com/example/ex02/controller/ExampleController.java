@@ -64,8 +64,8 @@ public class ExampleController {
     }
 
     @GetMapping("ex09")
-    public void ex09(List<MemberVO> members){
-        log.info(members.toString());
+    public void ex09(List<MemberVO> member){
+        log.info(member.toString());
     }
 
 //    [실습1]

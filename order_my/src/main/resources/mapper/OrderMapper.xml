@@ -12,9 +12,9 @@
         WHERE ORDER_ID=#{orderId}
     </delete>
     <!--상품 번호로 조회-->
-    <select id="selectByItemNumber" resultType="orderVO">
-        SELECT ORDER_ID, ORDER_DATE, ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE FROM TBL_ORDER
-        WHERE ITEM_NUMBER = #{itemNumber}
+    <select id="selectByItemNumber" resultType="orderDTO">
+        SELECT ORDER_ID, ORDER_DATE, I.ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE, I.ITEM_NAME, ITEM_PRICE, ITEM_STOCK
+        FROM TBL_ITEM I JOIN TBL_ORDER O ON I.ITEM_NUMBER = #{itemNumber} AND I.ITEM_NUMBER = O.ITEM_NUMBER
     </select>
     <!--주문 번호로 조회-->
     <select id="selectByOrderId" resultType="orderDTO">
@@ -23,8 +23,9 @@
          ON ORDER_ID = #{orderId} AND I.ITEM_NUMBER = O.ITEM_NUMBER
     </select>
     <!--전체 조회-->
-    <select id="selectAll" resultType="orderVO">
-        SELECT ORDER_ID, ORDER_DATE, ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE FROM TBL_ORDER
+    <select id="selectAll" resultType="orderDTO">
+        SELECT ORDER_ID, ORDER_DATE, I.ITEM_NUMBER, ITEM_COUNT, ORDER_PRICE, I.ITEM_NAME, ITEM_PRICE, ITEM_STOCK
+        FROM TBL_ITEM I JOIN TBL_ORDER O ON I.ITEM_NUMBER = O.ITEM_NUMBER
     </select>
     <!--주문 번호를 조회-->
     <select id="selectOrderId" resultType="string">

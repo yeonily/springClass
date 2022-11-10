@@ -17,10 +17,11 @@ public class CustomError implements ErrorController {
         if(status != null){
             int statusCode = Integer.valueOf(status.toString());
             if(statusCode == HttpStatus.NOT_FOUND.value()){
-                return "error/404";
+                return "/error/404";
             }
         }
-        return "error/500";
+
+        return "/error/500";
     }
 
 }

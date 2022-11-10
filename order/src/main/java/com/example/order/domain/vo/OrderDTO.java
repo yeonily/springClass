@@ -34,7 +34,5 @@ public class OrderDTO {
 
     public void setItemName(String itemName) {this.itemName = itemName;}
 
-    public void setItemStock(int itemStock) {
-        this.itemStock = itemStock;
-    }
+    public void setItemStock(int itemStock) {this.itemStock = itemStock;}
 }

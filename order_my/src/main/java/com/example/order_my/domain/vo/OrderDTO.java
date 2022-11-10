@@ -15,6 +15,7 @@ public class OrderDTO {
     private int itemCount;
     private int orderPrice;
     private int itemPrice; //각 item별 가격이 필요해서 DTO를 만들었다.
+    private int itemStock;
 
     public void setOrderPrice() { // 직접 setter를 만들었고, 다른 곳에서 쓸 수 없다.
         this.orderPrice = this.itemCount * this.itemPrice;
@@ -34,6 +35,10 @@ public class OrderDTO {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public void setItemStock(int itemStock) {
+        this.itemStock = itemStock;
     }
 
     // 원래 가변인자를 써서 (외부에서 item이 몇 개 들어올 지 모르니까..)

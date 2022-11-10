@@ -1,10 +1,8 @@
 package com.example.order.service;
 
-import com.example.order.domain.dao.OrderDAO;
 import com.example.order.domain.vo.OrderDTO;
 import com.example.order.domain.vo.OrderVO;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,11 +20,11 @@ public class OrderServiceTest {
     public void addOrderTest(){
         List<OrderVO> orders = new ArrayList<>();
         OrderVO order1 = new OrderVO();
-        order1.setItemNumber(4L);
+        order1.setItemNumber(3L);
         order1.setItemCount(10);
 
         OrderVO order2 = new OrderVO();
-        order2.setItemNumber(5L);
+        order2.setItemNumber(2L);
         order2.setItemCount(2);
 
         orders.add(order1);
@@ -37,15 +35,14 @@ public class OrderServiceTest {
 
     @Test
     public void cancelTest(){
-        String orderId = "2022110310";
+        String orderId = "202211039";
         orderSerive.cancel(orderId);
     }
 
 //    조회 테스트
     @Test
     public void showTest(){
-        Long itemNumber = 1l;
-        orderSerive.show(itemNumber).forEach(order -> {
+        orderSerive.show("당근").forEach(order -> {
             log.info(order.getOrderId() + ": " + order.getItemName() + ": " + order.getOrderDate() + ": " + order.getOrderPrice());
         });
     }

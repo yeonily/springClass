@@ -1,6 +1,7 @@
 package com.example.app.domain.dao;
 
 import com.example.app.domain.vo.BoardVO;
+import com.example.app.domain.vo.Criteria;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,9 @@ public class BoardDAOTest {
 
     @Test
     public void findAllTest(){
-        boardDAO.findAll().stream().map(BoardVO::toString).forEach(log::info);
+        Criteria criteria = new Criteria();
+        criteria.createCriteria();
+        boardDAO.findAll(criteria).stream().map(BoardVO::toString).forEach(log::info);
     }
 
     @Test
@@ -42,5 +45,10 @@ public class BoardDAOTest {
         BoardVO boardVO = boardDAO.findById(boardNumber);
         Assertions.assertNotNull(boardVO);
         boardDAO.deleteById(boardNumber);
+    }
+
+    @Test
+    public void selectCountOfBoard(){
+        log.info("board count: " + boardDAO.findCount(new Criteria()));
     }
 }
