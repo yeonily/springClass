@@ -8,8 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-@RequiredArgsConstructor
-@NoArgsConstructor
+@RequiredArgsConstructor @NoArgsConstructor
 public class ReplyVO {
     private Long replyNumber;
     @NonNull
@@ -20,6 +19,4 @@ public class ReplyVO {
     private String replyUpdateDate;
     @NonNull
     private Long boardNumber;
-
-
 }

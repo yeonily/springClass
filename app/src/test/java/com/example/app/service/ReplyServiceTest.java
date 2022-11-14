@@ -1,4 +1,4 @@
-package com.example.app.mapper;
+package com.example.app.service;
 
 import com.example.app.domain.vo.Criteria;
 import com.example.app.domain.vo.ReplyVO;
@@ -13,57 +13,69 @@ import java.util.stream.IntStream;
 
 @SpringBootTest
 @Slf4j
-public class ReplyMapperTest {
+public class ReplyServiceTest {
     @Autowired
-    private ReplyMapper replyMapper;
+    private ReplyService replyService;
     @Autowired
-    private BoardMapper boardMapper;
+    private BoardService boardService;
 
     @Test
-    public void insertTest(){
+    public void registerTest() {
 //        최신 게시글 5개에 2개씩 댓글 달기
         int amount = 5, replyCount = 2, totalCount = amount * replyCount;
 
         Criteria criteria = new Criteria();
         criteria.createCriteria(1, amount);
-        List<Long> boardNumbers = boardMapper.getList(criteria).stream().map(board -> board.getBoardNumber()).collect(Collectors.toList());
+        List<Long> boardNumbers = boardService.show(criteria).stream().map(board -> board.getBoardNumber()).collect(Collectors.toList());
 
         IntStream.range(0, totalCount).forEach(i -> {
             ReplyVO replyVO = new ReplyVO("reply" + (i + 1), "replier", boardNumbers.get(i % amount));
-            replyMapper.insert(replyVO);
+            replyService.register(replyVO);
         });
     }
 
     @Test
-    public void selectAllTest(){
+    public void showAllTest() {
         Criteria criteria = new Criteria();
         criteria.createCriteria(2, 10);
-        replyMapper.selectAll(401L, criteria).stream().map(ReplyVO::toString).forEach(log::info);
+        replyService.showAll(401L, criteria).stream().map(ReplyVO::toString).forEach(log::info);
     }
 
     @Test
-    public void updateTest(){
+    public void modifyTest() {
         Criteria criteria = new Criteria();
         criteria.createCriteria(2, 10);
-        ReplyVO replyVO = replyMapper.selectAll(401L, criteria).get(0);
+        ReplyVO replyVO = replyService.showAll(401L, criteria).get(0);
         replyVO.setReplyContent("updated reply");
-        replyMapper.update(replyVO);
+        replyService.modify(replyVO);
     }
 
     @Test
-    public void selectCountOfReplyNumberTest(){
+    public void getTotalTest() {
         int amount = 5, replyCount = 2, totalCount = amount * replyCount;
 
         Criteria criteria = new Criteria();
         criteria.createCriteria(1, amount);
-        List<Long> boardNumbers = boardMapper.getList(criteria).stream().map(board -> board.getBoardNumber()).collect(Collectors.toList());
+        List<Long> boardNumbers = boardService.show(criteria).stream().map(board -> board.getBoardNumber()).collect(Collectors.toList());
 
-        boardNumbers.forEach(boardNumber -> log.info(boardNumber + ": " + replyMapper.selectCountOfReply(boardNumber)));
+        boardNumbers.forEach(boardNumber -> log.info(boardNumber + ": " + replyService.getTotal(boardNumber)));
     }
 
     @Test
-    public void deleteTest(){
-        replyMapper.delete(22L);
+    public void removeTest() {
+        replyService.remove(22L);
     }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
