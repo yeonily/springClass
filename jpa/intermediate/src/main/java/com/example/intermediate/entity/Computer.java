@@ -1,36 +1,52 @@
-package com.example.myintermediate.entity;
+/*
+* 컴퓨터(Computer)
+   해상도(Screen)
+   브랜드(Brand)
+   상품명(Name)
+   가격(Price)
+   출시일(ReleaseDate)
+   램(Ram)
+   SSD
+   GPU
+   Processor
+   등록일(CreatedDate)
+   수정일(UpdatedDate)
 
-import com.example.myintermediate.type.Hardware;
+데스크탑(Desktop)
+   키보드타입(Keyboard)
+
+핸드폰(Phone)
+   배터리용량(Battery)
+*
+* */
+package com.example.intermediate.entity;
+
+import com.example.intermediate.type.Hardware;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity @Inheritance(strategy = InheritanceType.JOINED)
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "ELECTRONIC_DEVICE")
 @Table(name = "TBL_COMPUTER")
 @Getter @Setter @ToString
 @NoArgsConstructor
 public class Computer extends Period{
     @Id @GeneratedValue
-    @Column(name = "COMPUTER_ID")
     private Long computerId;
-    @Column(name = "COMPUTER_SCREEN")
     private int computerScreen;
-    @Column(name = "COMPUTER_BRAND")
     private String computerBrand;
-    @Column(name = "COMPUTER_NAME")
     private String computerName;
-    @Column(name = "COMPUTER_PRICE")
     private int computerPrice;
-    @Column(name = "COMPUTER_RELEASE_DATE")
     private LocalDateTime computerReleaseDate;
     @Embedded // 모듈을 사용할 때 작성한다.
     private Hardware hardware;
-
 
     public void create(int computerScreen, String computerBrand, String computerName, int computerPrice, LocalDateTime computerReleaseDate, Hardware hardware) {
         this.computerScreen = computerScreen;
@@ -41,3 +57,24 @@ public class Computer extends Period{
         this.hardware = hardware;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@ package com.example.myintermediate.repository;
 
 import com.example.myintermediate.entity.Desktop;
 import com.example.myintermediate.entity.Phone;
+import com.example.myintermediate.type.Hardware;
 import com.example.myintermediate.type.KeyboardType;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.jni.Local;
@@ -27,12 +28,18 @@ public class ComputerRepositoryTest {
     @Test
     public void saveTest(){
         Desktop desktop = new Desktop();
-        Phone phone = new Phone();
+        Hardware hardware = new Hardware();
 
-        desktop.create(1024, "samsung","mycom", 2_000_000, LocalDateTime.of(2019,10,21,0,0), 8, 100, 16, "Window", LocalDateTime.now(), LocalDateTime.of(2022,12,12,0,0), KeyboardType.KOREAN);
-        phone.create(1024, "galaxy","myphone", 1_000_000, LocalDateTime.of(2021,10,21,0,0), 8, 100, 16, "Android", LocalDateTime.now(), LocalDateTime.of(2022,12,12,0,0), 100);
+        hardware.create(8, 512, "RTX3050", "Intel");
 
-        assertThat(desktopRepository.save(desktop).getComputerBrand()).isEqualTo("samsung");
-        assertThat(phoneRepository.save(phone).getComputerBrand()).isEqualTo("galaxy");
+        desktop.create(1980, "삼성","갤럭시북", 2_000_000, LocalDateTime.of(2019,10,21,0,0), hardware, KeyboardType.KOREAN);
+
+        desktopRepository.save(desktop);
+    }
+
+    @Test
+    public void updateTest(){
+//        assertThat(desktopRepository.findById(1l).get().getComputerBrand()).isEqualTo("삼성"); //검증완
+        desktopRepository.findById(1l).get().setComputerBrand("LG");
     }
 }

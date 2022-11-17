@@ -1,4 +1,4 @@
-package com.example.myintermediate;
+package com.example.advanced;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing
 @SpringBootApplication
-public class IntermediateApplication {
+public class AdvancedApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(IntermediateApplication.class, args);
+        SpringApplication.run(AdvancedApplication.class, args);
     }
 
 }

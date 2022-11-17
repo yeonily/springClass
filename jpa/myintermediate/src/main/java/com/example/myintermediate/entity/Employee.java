@@ -1,16 +1,18 @@
 package com.example.myintermediate.entity;
 
 import lombok.*;
+import org.springframework.web.bind.annotation.Mapping;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Entity //상속관계에서는 Entity를 사용해야 조회 시 조인이 가능하다.
 @DiscriminatorColumn(name = "EMPLOYEE_DEPARTMENT")
 @Table(name = "TBL_EMPLOYEE")
 @Getter @Setter @ToString
 @NoArgsConstructor
-public class Employee {
+public abstract class Employee {//만약 상속관계에서 부모 클래스를 직접 사용할 일이 없으면, abstract 키워드를 붙여준다.
     @Id
     @GeneratedValue
     @Column(name = "EMPLOYEE_ID")
