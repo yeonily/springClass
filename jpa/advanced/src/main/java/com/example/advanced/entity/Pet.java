@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TBL_PET")
-@Getter @Setter @ToString
+@Getter @Setter @ToString(exclude = "owner")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Pet {
     @Id @GeneratedValue

@@ -82,7 +82,7 @@ public class SuperCarRepositoryTest {
     @Test
     public void findAll(){
 //        page는 0부터 시작한다.
-        superCarRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "superCarId")))
+        superCarRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "superCarId")))//엔티티 필드명을 줘야함.
                 .getContent().stream().map(SuperCar::toString).forEach(log::info);
     }
 

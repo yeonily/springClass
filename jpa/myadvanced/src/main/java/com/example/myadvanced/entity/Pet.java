@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "TBL_PET")
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "owner")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 //무분별한 생성을 막기 위해서 public보다는 protected로 설정하고, Spring에서 관리하는 대상이므로 private은 적절하지 않다.
 public class Pet {

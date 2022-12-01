@@ -99,7 +99,9 @@ public class SuperCarTest {
 
     @Test
     public void bulkUpdateTest(){
-//        List<SuperCar> superCars = superCarDAO.findAllPaging(0, 10);
+        //List<SuperCar> superCars = superCarDAO.findAllPaging(0, 10); //최신 자동차 10개만 뽑아 옴.
+
+        //DAO 그대로 복사, DAO는 메소드 하나하나가 다 트랜잭션임.
         String q1 = "select s from SuperCar s order by s.superCarId desc";
         List<SuperCar> superCars = entityManager.createQuery(q1, SuperCar.class)
                 .setFirstResult(0) //0부터 시작
@@ -121,6 +123,7 @@ public class SuperCarTest {
     }
 }
 
+//알아서 트랜잭션이 종료되어 자동으로 1차캐시가 클리어가 됨.
 
 
 

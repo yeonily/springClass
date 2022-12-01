@@ -89,8 +89,8 @@ public class MemberRepositoryTest {
     @Test
     public void updateByNameTest(){
         Member member = memberRepository.findById(3L).get();
-        memberRepository.updateByName(20);
-        member = memberRepository.findById(3L).get();
+        memberRepository.updateByAge(20);
+        member = memberRepository.findById(3L).get(); //직접 한번 더 호출해야 함.
         assertThat(member.getMemberAge()).isEqualTo(23);
     }
 

@@ -11,14 +11,16 @@ import java.util.List;
 
 // Query method: Spring-Data-JPA에서 정해놓은 메소드의 이름으로 선언하면 자동으로 구현체를 주입하여 쿼리를 실행해준다.
 // find[조회할 필드명 또는 아무거나]By[Where절에 =으로 들어갈 조건 필드명] : 조회할 필드명을 생략하면 전체 조회
-// count[조회할 필드명 또는 아무거나]By[Where절에 =으로 들어갈 조건 필드명] :  개수 조회
+// count[조회할 필드명 또는 아무거나]By[Where절에 =으로 들어갈 조건 필드명] : 개수 조회
 // exist[조회할 필드명 또는 아무거나]By[Where절에 =으로 들어갈 조건 필드명] : boolean 타입으로 유무 검사
 // delete[조회할 필드명 또는 아무거나]By[Where절에 =으로 들어갈 조건 필드명] : 삭제
 public interface MemberRepository extends JpaRepository<Member, Long> {
+    public List<Member> findByMemberNameLike(String memberName);
+
+
     public List<Member> findByMemberNameContaining(String memberName);
     public List<Member> findByMemberNameStartingWith(String memberName);
     public List<Member> findByMemberNameEndingWith(String memberName);
-    public List<Member> findByMemberNameLike(String memberName);
 
 //    @Query
 //    쿼리 메소드만 사용하면 메소드명이 너무 길어질 수 있기 때문에 @Query를 사용하여 원하는 쿼리를 JPQL로 작성하여 해결할 수 있다.
@@ -37,7 +39,7 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
 
     @Modifying(clearAutomatically = true)
     @Query("update Member m set m.memberAge = m.memberAge - 1 where m.memberAge > :memberAge")
-    public int updateByName(int memberAge);
+    public int updateByAge(int memberAge);
 
     @Modifying(clearAutomatically = true)
     @Query("delete from Member m where m.memberAge > :memberAge")

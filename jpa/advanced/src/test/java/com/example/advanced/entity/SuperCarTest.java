@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.*;
 @Slf4j
 @Transactional
 @Rollback(false)
-public class CarTest {
+public class SuperCarTest {
     @Autowired
     private CarRepository carRepository;
 
@@ -51,9 +51,10 @@ public class CarTest {
 
     @Test
     public void delete(){
-        carOwnerRepository.delete(carOwnerRepository.findById(1L).get());
-//        carRepository.delete(carRepository.findById(2L).get());
-    }
+        carOwnerRepository.delete(carOwnerRepository.findById(1L).get()); //주인을 지워야 한다.
+//        carRepository.delete(carRepository.findById(2L).get()); //자동차먼저 지우고
+        //제약조건 위배: 자동차가 fk로 참조중이니까 자식부터 지워야 함.
+   }
 }
 
 

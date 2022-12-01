@@ -20,6 +20,7 @@ public class SuperCarDAO {
         return entityManager.find(SuperCar.class, superCar.getSuperCarId());
     }
 
+    //1차 캐시에 객체가 들어가 있기 때문에, find로 가져와서 SuperCar 삭제함.
     public void delete(SuperCar superCar){
         entityManager.remove(superCar);
     }
@@ -38,11 +39,11 @@ public class SuperCarDAO {
 //        2. JPQL 키워드는 대소문자를 구분하지 않는다.
 //        3. JPQL에서 사용하는 테이블명은 클래스명이 아닌 엔티티명이다.
 //        4. 엔티티의 Alias는 필수로 작성해야 한다.
-        return entityManager.createQuery("select s from SuperCar s", SuperCar.class).getResultList();
+        return entityManager.createQuery("select s from SuperCar s", SuperCar.class).getResultList();//list 가지고 오는 것
     }
 
     public Long getCountOfSuperCar(){
-        return entityManager.createQuery("select count(s) from SuperCar s", Long.class).getSingleResult();
+        return entityManager.createQuery("select count(s) from SuperCar s", Long.class).getSingleResult();//하나 가지고 오는 것
     }
 
 //    파라미터 바인딩
@@ -51,6 +52,7 @@ public class SuperCarDAO {
                 .setParameter("superCarReleaseDate", superCarReleaseDate).getResultList();
     }
 
+//    Like
     public List<SuperCar> findSuperCarByColorContaining(String superCarColor){
         return entityManager.createQuery("select s from SuperCar s where s.superCarColor like :keyword")
                 .setParameter("keyword", "%" + superCarColor + "%").getResultList();

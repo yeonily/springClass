@@ -53,17 +53,17 @@ public class SuperCarRepositoryTest {
     void findAll() {
 //        page는 0부터 시작한다.
         Page<SuperCar> superCars = superCarRepository.findAll(PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "superCarId")));
-        log.info("number: " + superCars.getNumber());
-        log.info("totalPage: " + superCars.getTotalPages());
-        log.info("hasNext: " + superCars.hasNext());
-        log.info("hasPrevious: " +superCars.hasPrevious());
-        log.info("isFirst: " +superCars.isFirst());
-        log.info("isLast: " +superCars.isLast());
+        log.info("number: " + superCars.getNumber()); //현재페이지
+        log.info("totalPage: " + superCars.getTotalPages()); //realend
+        log.info("hasNext: " + superCars.hasNext()); //다음페이지 있는 지 검사
+        log.info("hasPrevious: " +superCars.hasPrevious()); //이전페이지 있는 지 검사
+        log.info("isFirst: " +superCars.isFirst()); //첫페이지 인지 검사
+        log.info("isLast: " +superCars.isLast()); //마지막페이지 인지 검사
 //                .getContent().stream().map(SuperCar::toString).forEach(log::info);
     }
 
     @Test
-    public void findTop10OrderBySuperCarIdDescTest(){
+    public void findTop10OrderBySuperCarIdDescTest(){ //최근게시물 10개 가져옴
         superCarRepository.findTop10ByOrderBySuperCarIdDesc().stream().map(SuperCar::toString).forEach(log::info);
     }
 
