@@ -30,7 +30,7 @@
    그래서 스프링 프레임워크가 등장했고, 특정 기능을 위주로 간단한 JAR파일 등을 이용해서
    모든 개발이 가능하도록 구성되어 있다.
 
-# 스프링 프레임워크의 장점
+## 스프링 프레임워크의 장점
    - 복잡함에 반기를 들어서 만들어진 프레임워크(경량화)
    - 프로젝트 전체 구조를 설계할 때 유용한 프레임워크(서버 제작의 빠른 속도)
    - 다른 프레임워크들의 포용, 여러 프레임워크를 혼용해서 사용가능하며, 이를 접착성이라고 한다.
@@ -181,7 +181,7 @@ Handler Mapping 또는 Controller 에 전달을 한다.
    이를 Service 객체로 사용한다.
 
 
-순서 -> MAPPER-> 인터페이스MAPPER -> DAO -> SERVICE -> CONTROLLER
+순서 -> MAPPER-> 인터페이스MAPPER -> DAO -> SERVICE -> CONTROLLER <br>
                   단위test         단위test   단위test         단위test
 
 ## PATTERN
