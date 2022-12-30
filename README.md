@@ -166,7 +166,7 @@ Handler Mapping 또는 Controller 에 전달을 한다.
 쉽게 교환하루 있게 하자는 방식이다. 각 연결 부위는 인터페이스를 이용해서 설계하는 것이 일반적인 구성 방식이다.
 
 
-      Presentation ----> Business ----> Persistence ----> DBMS
+      Presentation ----> Business ----> Persistence --------> DBMS
                Controller        Service(interface)    Mapper(interface)    
 
               
@@ -181,8 +181,8 @@ Handler Mapping 또는 Controller 에 전달을 한다.
    이를 Service 객체로 사용한다.
 
 
-순서 -> MAPPER-> 인터페이스MAPPER -> DAO -> SERVICE -> CONTROLLER <br>
-                  단위test         단위test   단위test         단위test
+        순서 -> MAPPER-> 인터페이스MAPPER -> DAO -> SERVICE -> CONTROLLER <br>
+                         단위test         단위test   단위test         단위test
 
 ## PATTERN
 ![PATTERN](./pattern.jfif)
