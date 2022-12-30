@@ -181,8 +181,7 @@ Handler Mapping 또는 Controller 에 전달을 한다.
    이를 Service 객체로 사용한다.
 
 
-        순서 -> MAPPER-> 인터페이스MAPPER -> DAO -> SERVICE -> CONTROLLER <br>
-                         단위test         단위test   단위test         단위test
+        순서 -> MAPPER-> 인터페이스MAPPER(단위test) -> DAO(단위test) -> SERVICE(단위test) -> CONTROLLER(단위test) <br>
 
 ## PATTERN
 ![PATTERN](./pattern.jfif)
